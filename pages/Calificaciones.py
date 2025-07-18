@@ -6,7 +6,7 @@ import plotly.express as px
 # --- Configuración de la página ---
 st.set_page_config(
     page_title="IMDb: Calificaciones y Títulos Destacados",
-    page_icon="images/IMDB_Logo_2016.png", # Asegúrate de que la ruta de la imagen sea correcta
+    page_icon="images/IMDB_Logo_2016.png", 
     layout="wide"
 )
 
@@ -23,7 +23,6 @@ st.sidebar.markdown("¡Explora más en la [Página Oficial de IMDb](https://www.
 @st.cache_data
 def load_data():
     try:
-        # Asumiendo que 'imdb_movies_and_series_combined.csv' es tu archivo combinado
         df = pd.read_csv('data/imdb_dataset.csv', encoding='utf-8')
         
         # Convertir tipos de datos y manejar errores
