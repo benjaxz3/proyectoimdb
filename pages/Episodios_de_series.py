@@ -24,7 +24,7 @@ title_episode = pd.concat([ep1, ep2, ep3], ignore_index=True)
 # --- Configuración de la página ---
 st.set_page_config(
     page_title="IMDb: Episodios por Temporada",
-    page_icon="images/IMDB_Logo_2016.png", # Asegúrate de que la ruta sea correcta
+    page_icon="images/IMDB_Logo_2016.png", 
     layout="wide"
 )
 
@@ -36,8 +36,8 @@ def load_css(file_name):
     except FileNotFoundError:
         st.sidebar.warning(f"Archivo CSS '{file_name}' no encontrado. No se aplicará estilo personalizado.")
 
-load_css("style.css") # Asegúrate de que style.css esté en la misma carpeta
-st.sidebar.image("images/IMDB_Logo_2016.png", width=280) # Asegúrate de que la ruta sea correcta
+load_css("style.css") 
+st.sidebar.image("images/IMDB_Logo_2016.png", width=280) 
 st.sidebar.markdown("---")
 st.sidebar.markdown("¡Explora más en la [Página Oficial de IMDb](https://www.imdb.com/)!")
 st.sidebar.markdown("---")
@@ -47,14 +47,14 @@ st.sidebar.markdown("---")
 @st.cache_data
 def load_main_data():
     try:
-        # ✅ Cargar dataset principal
+        # Cargar dataset principal
         df_combined = pd.read_csv('data/imdb_dataset.csv', encoding='utf-8')
 
-        # ✅ Usar directamente el DataFrame que ya uniste arriba
+        # Usar directamente el DataFrame 
         df_episodes_raw = title_episode.copy()
         df_episodes_raw.replace('\\N', pd.NA, inplace=True)
 
-        # ✅ Procesar columnas del dataset principal
+        # Procesar columnas del dataset principal
         df_combined['startYear'] = pd.to_numeric(df_combined['startYear'], errors='coerce')
         df_combined['averageRating'] = pd.to_numeric(df_combined['averageRating'], errors='coerce')
         df_combined['numVotes'] = pd.to_numeric(df_combined['numVotes'], errors='coerce')
@@ -62,7 +62,7 @@ def load_main_data():
         df_combined.dropna(subset=['startYear', 'averageRating', 'genres'], inplace=True)
         df_combined['startYear'] = df_combined['startYear'].astype(int)
 
-        # ✅ Procesar columnas del episodio TSV
+        # Procesar columnas del episodio TSV
         df_episodes_raw.rename(columns={
             'tconst': 'episodeTconst',
             'parentTconst': 'tconst_parent_series',
@@ -76,7 +76,7 @@ def load_main_data():
         df_episodes_raw['seasonNumber'] = df_episodes_raw['seasonNumber'].astype(int)
         df_episodes_raw['episodeNumber'] = df_episodes_raw['episodeNumber'].astype(int)
 
-        # ✅ Fusionar ambos DataFrames
+        # Fusionar ambos DataFrames
         df_final_combined = pd.merge(
             df_combined,
             df_episodes_raw[['tconst_parent_series', 'episodeTconst', 'seasonNumber', 'episodeNumber']],
@@ -316,7 +316,7 @@ if not df_main.empty and not imdb_episodios.empty:
             else:
                 st.warning(f"No se encontraron datos de episodios con calificaciones para la serie '{selected_series_title}'.")
 
-        else: # Si selected_series_title es None (raro con options cargadas, pero es buena práctica)
+        else: 
             st.info("Por favor, selecciona una serie para ver sus datos de episodios.")
 
     else:
