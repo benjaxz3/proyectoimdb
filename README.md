@@ -4,7 +4,7 @@ Este proyecto busca democratizar el análisis de datos cinematográficos, ofreci
 Todo esto este proyecto se llevo a cabo gracias a las Bases de Datos gratuitas que proporciona la pagína IMDb.
 
 ## Características
-- Explorador de Calificaiones y Titulos destacados.
+- Explorador de Calificaciones y Titulos destacados.
 - Analisis detallado de Series y Episodios.
 - Exploración temporal, para ver la evolución de las calificaciones a lo largo del tiempo.
 - Personalización de generos cinematograficos según los gustos.
@@ -17,26 +17,23 @@ Antes de instalar, asegúrese de tener:
 
 ## Instalación
 
-1. Vaya a la pestaña "Desarrollo en la nube" o al siguiente link y descargue el repositorio:
+1. Vaya al directorio de inicio y clone el repositorio:
 ```bash
-https://drive.google.com/file/d/1bMSXbfaOHwbSeU6RhnLFUCpJUUHbZ7am/view?usp=sharing
+cd ~
+git clone https://github.com/benjaxz3/proyectoimdb
+cd proyectoimdb
 ```
 
-2. Vaya a la carpeta donde descomprimio el repositorio y proceda a instalar los paquetes necesarios:
+2. Instale los paquetes necesarios:
 ```bash
 pip install -r requirements.txt
 ```
-
 ## Uso
 
 Tras la instalación, puedes iniciar IMDb_Visualizador escribiendo en tu terminal:
 ```bash
-cd ~/IMDb_Visualizador
+cd ~/proyectoimdb
 streamlit run Explorador.py
 ```
 
 Esto abrirá IMDb_Visualizador en tu navegador web predeterminado.
-
-## Licencia
-
-IMDb
