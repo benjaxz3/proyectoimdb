@@ -15,8 +15,8 @@ def load_css(file_name):
 
 load_css("style.css")
 
-# Luego, el enlace a IMDb
-st.sidebar.image("images/IMDB_Logo_2016.png", width=280) # Ajusta el 'width' según necesites
+
+st.sidebar.image("images/IMDB_Logo_2016.png", width=280) 
 st.sidebar.markdown("¡Explora más en la [Página Oficial de IMDb](https://www.imdb.com/)!")
 
 # --- Función para cargar los datos (con caché para eficiencia) ---
@@ -24,7 +24,6 @@ st.sidebar.markdown("¡Explora más en la [Página Oficial de IMDb](https://www.
 def load_data():
     try:
         df = pd.read_csv('data/imdb_dataset.csv', encoding='utf-8')
-        # Asegúrate de que las columnas numéricas sean del tipo correcto
         df['startYear'] = pd.to_numeric(df['startYear'], errors='coerce')
         df['averageRating'] = pd.to_numeric(df['averageRating'], errors='coerce')
         df['numVotes'] = pd.to_numeric(df['numVotes'], errors='coerce')
@@ -154,7 +153,7 @@ if not df_combined.empty:
         st.info("Por favor, selecciona al menos un género para ver el gráfico de líneas.")
 
     # --- NUEVO GRÁFICO DE LÍNEAS: COMPARACIÓN PELÍCULAS VS SERIES POR RANGO DE AÑOS ---
-    st.markdown("---") # Un separador visual
+    st.markdown("---") 
     st.header("Puntuación Promedio Anual (Películas vs. Series)")
     st.markdown("Compara cómo han evolucionado las calificaciones promedio de películas y series a lo largo de los años en un rango de tiempo específico.")
 
@@ -202,7 +201,6 @@ if not df_combined.empty:
             # Mapear 'movie'/'tvSeries' a 'Películas'/'Series'
             yearly_avg_comparison['Tipo de Título'] = yearly_avg_comparison['Tipo de Título'].map(NAME_MAP)
 
-            # Opcional: Filtrar años/tipos con pocos datos (ej. menos de 50 títulos)
             MIN_TITLES_COMPARISON = 50 # Puedes ajustar este umbral
             yearly_avg_comparison_filtered = yearly_avg_comparison[yearly_avg_comparison['count'] >= MIN_TITLES_COMPARISON]
 
